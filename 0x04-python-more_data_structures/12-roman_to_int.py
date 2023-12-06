@@ -1,27 +1,29 @@
 #!/usr/bin/python3
+
 def roman_to_int(roman_string):
-    sum = 0
-    index = 0
-    if roman_string is not None:
-        roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
-                 'C': 100, 'D': 500, 'M': 1000}
-        listrom = list(roman.keys())
-        length = len(roman_string)
-        for char in roman_string:
-            if char in roman:
-                if char in 'IXC':
-                    if index < length-1:
-                        if listrom[index+1] in 'VXLCDM':
-                            sum = sum + (roman[listrom[index+1]]-roman[char])
-                sum += roman[char]
-            index += 1
-    return sum
+    if (not isinstance(roman_string, str) or
+            roman_string is None):
+        return (0)
 
+    roman_dict = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+    }
+    num = 0
 
-"""
-check if current charachter index is equal to lenght
-"I" can be subtracted from "V" and "X",
-"X" can be subtracted from "L" and "C",
-"C" can be subtracted from "D" and "M".
-However, "V", "L", and "D" cannot be used to represent subtraction.
-"""
+    for i in range(len(roman_string)):
+        if roman_dict.get(roman_string[i], 0) == 0:
+            return (0)
+
+        if (i != (len(roman_string) - 1) and
+                roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]):
+                num += roman_dict[roman_string[i]] * -1
+
+        else:
+            num += roman_dict[roman_string[i]]
+    return (num)
