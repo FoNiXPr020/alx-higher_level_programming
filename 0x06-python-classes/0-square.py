@@ -1,11 +1,8 @@
 #!/usr/bin/python3
-""" 
-Module contains empty class Square
-"""
+# 0-square.py by FoNiX
+"""Defines a square """
 
 
 class Square:
-    """
-    This is an empty class.
-    """
+    """Does nothing"""
     pass
