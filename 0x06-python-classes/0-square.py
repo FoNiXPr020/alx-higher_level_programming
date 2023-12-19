@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+""" 
+Module contains empty class Square
+"""
+
+
 class Square:
-    """Empty class that defines a square"""
+    """
+    This is an empty class.
+    """
     pass
