@@ -3,7 +3,9 @@
 
 import json
 import os
-
+import csv
+import turtle
+from random import randrange
 
 class Base:
     """Base of all classes in this project"""
@@ -111,3 +113,39 @@ class Base:
         instance.y = 0
         instance.update(**dictionary)
         return instance
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a Turtle window and draws
+        rectangles and squares.
+
+        Args:
+            - list_rectangles: list of Rectangle instances
+            - list_squares: list of Square instances
+        """
+
+        turtle.speed(2)
+        turtle.bgcolor("white")
+
+        for i in (list_rectangles + list_squares):
+            t = turtle.Turtle()
+            t.color("black")
+            t.pensize(3)
+            t.penup()
+            t.setpos(0, 0)
+            turtle.Screen().colormode(255)
+            t.pencolor((randrange(255), randrange(255), randrange(255)))
+            Base.draw_shape(t, i)
+            turtle.hideturtle()
+
+        turtle.exitonclick()
+
+    @staticmethod
+    def draw_shape(t, shape):
+        """Helper method to draw a Rectangle or Square."""
+        t.penup()
+        t.setpos(shape.x, shape.y)
+        t.pendown()
+        for _ in range(4):
+            t.forward(shape.width)
+            t.left(90)
