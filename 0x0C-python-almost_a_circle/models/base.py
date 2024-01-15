@@ -7,6 +7,7 @@ import csv
 import turtle
 from random import randrange
 
+
 class Base:
     """Base of all classes in this project"""
 
